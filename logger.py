@@ -31,10 +31,10 @@ def server_emu(tcp_port):
     client.listen(1)
     conn, addr = client.accept()
     while True:
-        request = conn.recv(1024)
+        request = conn.recv(4096)
         log(f"se: {request}\n")
         server.sendall(request)
-        response = server.recv(1024)
+        response = server.recv(4096)
         log(f"re: {response}\n")
         log("\n")
         conn.sendall(response)
